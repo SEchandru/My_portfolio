@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Portfolio CMS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scroll-bar"></div>
+  </div>
+
+  <canvas id="circuit-canvas"></canvas>
+
+  <div class="dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar glass-panel">
+      <div class="sidebar-brand">
+        <i class="fa-solid fa-microchip"></i>
+        <span>ADMIN.IO</span>
+      </div>
+      
+      <div class="sidebar-user">
+        <div class="user-avatar"><i class="fa-solid fa-user-gear"></i></div>
+        <div class="user-info">
+          <h4 id="user-display-name">Chandrabal C</h4>
+          <p>Administrator</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-tab-btn active" data-tab="overview"><i class="fa-solid fa-chart-line"></i> Overview</button>
+        <button class="nav-tab-btn" data-tab="profile"><i class="fa-solid fa-address-card"></i> Profile</button>
+        <button class="nav-tab-btn" data-tab="projects"><i class="fa-solid fa-diagram-project"></i> Projects</button>
+        <button class="nav-tab-btn" data-tab="experience"><i class="fa-solid fa-briefcase"></i> Experience</button>
+        <button class="nav-tab-btn" data-tab="skills"><i class="fa-solid fa-bolt"></i> Skills</button>
+        <button class="nav-tab-btn" data-tab="certificates"><i class="fa-solid fa-award"></i> Certificates</button>
+        <button class="nav-tab-btn" data-tab="resumes"><i class="fa-solid fa-file-pdf"></i> Resumes</button>
+        <button class="nav-tab-btn" data-tab="messages"><i class="fa-solid fa-envelope-open-text"></i> Messages <span class="badge" id="message-badge">0</span></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="/" class="btn btn-secondary btn-sm" style="width: 100%; margin-bottom: 0.5rem;"><i class="fa-solid fa-globe"></i> View Site</a>
+        <button onclick="logout()" class="btn btn-primary btn-sm" style="width: 100%; background: #EF4444;"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+      <header class="content-header glass-panel">
+        <h2 id="current-tab-title">Overview Dashboard</h2>
+        <div class="header-actions">
+          <span id="serial-link-status" class="status-indicator"><i class="fa-solid fa-circle-nodes"></i> Serial Link: Online</span>
+        </div>
+      </header>
+
+      <!-- Tab Panels -->
+      <div class="tab-panels-container">
+        
+        <!-- Tab 1: Overview -->
+        <div class="tab-panel active" id="tab-overview">
+          <div class="analytics-grid">
+            <div class="glass-panel analytic-card">
+              <i class="fa-solid fa-users"></i>
+              <div class="analytic-info">
+                <h3>Visitor Count</h3>
+                <span class="analytic-val" id="val-visitors">0</span>
+              </div>
+            </div>
+            <div class="glass-panel analytic-card">
+              <i class="fa-solid fa-download"></i>
+              <div class="analytic-info">
+                <h3>Resume Downloads</h3>
+                <span class="analytic-val" id="val-downloads">0</span>
+              </div>
+            </div>
+            <div class="glass-panel analytic-card">
+              <i class="fa-solid fa-eye"></i>
+              <div class="analytic-info">
+                <h3>Project Views</h3>
+                <span class="analytic-val" id="val-project-views">0</span>
+              </div>
+            </div>
+            <div class="glass-panel analytic-card">
+              <i class="fa-solid fa-paper-plane"></i>
+              <div class="analytic-info">
+                <h3>Messages Sent</h3>
+                <span class="analytic-val" id="val-messages">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-panel recent-panel" style="margin-top: 2rem;">
+            <h3>Recent Submissions</h3>
+            <div class="table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Sender</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-messages-list">
+                  <tr><td colspan="4" style="text-align: center;">No transmissions logged.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Profile -->
+        <div class="tab-panel" id="tab-profile">
+          <div class="glass-panel form-panel">
+            <h3>Update Profile Configuration</h3>
+            <form id="profile-mgr-form" class="contact-form admin-form">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <input type="text" id="prof-name" class="form-input" placeholder=" " required>
+                  <label for="prof-name" class="form-label">Full Name</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="prof-role" class="form-input" placeholder=" " required>
+                  <label for="prof-role" class="form-label">Professional Role</label>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <input type="text" id="prof-tagline" class="form-input" placeholder=" " required>
+                <label for="prof-tagline" class="form-label">Hex Tagline Code</label>
+              </div>
+
+              <div class="form-group">
+                <textarea id="prof-bio" class="form-input form-textarea" placeholder=" " required></textarea>
+                <label for="prof-bio" class="form-label">Biographical Pitch</label>
+              </div>
+
+              <div class="form-row-3">
+                <div class="form-group">
+                  <input type="email" id="prof-email" class="form-input" placeholder=" " required>
+                  <label for="prof-email" class="form-label">Public Email</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="prof-phone" class="form-input" placeholder=" " required>
+                  <label for="prof-phone" class="form-label">Public Phone</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="prof-location" class="form-input" placeholder=" " required>
+                  <label for="prof-location" class="form-label">Location Address</label>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <input type="url" id="prof-linkedin" class="form-input" placeholder=" ">
+                  <label for="prof-linkedin" class="form-label">LinkedIn Link</label>
+                </div>
+                <div class="form-group">
+                  <input type="url" id="prof-github" class="form-input" placeholder=" ">
+                  <label for="prof-github" class="form-label">GitHub URL</label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> Save Profile Configuration</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 3: Projects -->
+        <div class="tab-panel" id="tab-projects">
+          <!-- Projects List -->
+          <div class="glass-panel recent-panel" style="margin-bottom: 2rem;">
+            <div class="header-with-action">
+              <h3>Registered Projects</h3>
+              <button class="btn btn-primary btn-sm add-new-trigger" data-form="project"><i class="fa-solid fa-plus"></i> Add Project</button>
+            </div>
+            <div id="admin-projects-list" class="admin-items-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Add / Edit Project Form -->
+          <div class="glass-panel form-panel hidden-panel" id="form-project-container">
+            <h3 id="project-form-title">Create Project Entry</h3>
+            <form id="project-mgr-form" class="contact-form admin-form">
+              <input type="hidden" id="proj-id">
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <input type="text" id="proj-title" class="form-input" placeholder=" " required>
+                  <label for="proj-title" class="form-label">Project Title</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="proj-image" class="form-input" placeholder=" " required>
+                  <label for="proj-image" class="form-label">Image File Path (or Upload Below)</label>
+                </div>
+              </div>
+
+              <!-- Media Library Drag & Drop Integration -->
+              <div class="form-group file-upload-box">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p>Drag project cover image here or <span>click to browse</span></p>
+                <input type="file" id="proj-image-file" accept="image/*">
+                <div class="upload-progress" id="proj-upload-progress"></div>
+              </div>
+
+              <div class="form-group">
+                <textarea id="proj-description" class="form-input form-textarea" placeholder=" " required></textarea>
+                <label for="proj-description" class="form-label">Overview Description</label>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <textarea id="proj-problem" class="form-input form-textarea" placeholder=" "></textarea>
+                  <label for="proj-problem" class="form-label">Problem Statement</label>
+                </div>
+                <div class="form-group">
+                  <textarea id="proj-solution" class="form-input form-textarea" placeholder=" "></textarea>
+                  <label for="proj-solution" class="form-label">Solution Approach</label>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <input type="text" id="proj-hardware" class="form-input" placeholder=" " required>
+                  <label for="proj-hardware" class="form-label">Hardware Stack (e.g. ESP32, Sensors)</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="proj-software" class="form-input" placeholder=" " required>
+                  <label for="proj-software" class="form-label">Software Stack (e.g. Embedded C, MQTT)</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="proj-results" class="form-input" placeholder=" ">
+                <label for="proj-results" class="form-label">Results & Performance Metrics</label>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <input type="url" id="proj-github" class="form-input" placeholder=" ">
+                  <label for="proj-github" class="form-label">GitHub Repository Link</label>
+                </div>
+                <div class="form-group">
+                  <input type="url" id="proj-demo" class="form-input" placeholder=" ">
+                  <label for="proj-demo" class="form-label">Live Demo / URL</label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-check"></i> Save Project</button>
+                <button type="button" class="btn btn-secondary cancel-form-btn" data-form="project">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 4: Experience -->
+        <div class="tab-panel" id="tab-experience">
+          <!-- Experience List -->
+          <div class="glass-panel recent-panel" style="margin-bottom: 2rem;">
+            <div class="header-with-action">
+              <h3>Employment & History Timeline</h3>
+              <button class="btn btn-primary btn-sm add-new-trigger" data-form="experience"><i class="fa-solid fa-plus"></i> Add History</button>
+            </div>
+            <div id="admin-experience-list" class="admin-items-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Add / Edit Experience Form -->
+          <div class="glass-panel form-panel hidden-panel" id="form-experience-container">
+            <h3 id="experience-form-title">Create History Entry</h3>
+            <form id="experience-mgr-form" class="contact-form admin-form">
+              <input type="hidden" id="exp-id">
+              
+              <div class="form-row-3">
+                <div class="form-group">
+                  <input type="text" id="exp-company" class="form-input" placeholder=" " required>
+                  <label for="exp-company" class="form-label">Company / Institution</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="exp-role" class="form-input" placeholder=" " required>
+                  <label for="exp-role" class="form-label">Role Title</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="exp-duration" class="form-input" placeholder=" " required>
+                  <label for="exp-duration" class="form-label">Duration (e.g. Oct 2025 - Present)</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <textarea id="exp-responsibilities" class="form-input form-textarea" placeholder=" " required></textarea>
+                <label for="exp-responsibilities" class="form-label">Responsibilities (Enter each duty on a new line)</label>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="exp-tags" class="form-input" placeholder=" " required>
+                <label for="exp-tags" class="form-label">Technology Tags (Comma-separated, e.g. ESP32, KiCad)</label>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-check"></i> Save Timeline</button>
+                <button type="button" class="btn btn-secondary cancel-form-btn" data-form="experience">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 5: Skills -->
+        <div class="tab-panel" id="tab-skills">
+          <!-- Skills Grid -->
+          <div class="glass-panel recent-panel" style="margin-bottom: 2rem;">
+            <div class="header-with-action">
+              <h3>Skill Matrix</h3>
+              <button class="btn btn-primary btn-sm add-new-trigger" data-form="skill"><i class="fa-solid fa-plus"></i> Add Skill</button>
+            </div>
+            <div id="admin-skills-list" class="admin-items-list-flex">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Add / Edit Skill Form -->
+          <div class="glass-panel form-panel hidden-panel" id="form-skill-container">
+            <h3 id="skill-form-title">Create Skill Entry</h3>
+            <form id="skill-mgr-form" class="contact-form admin-form">
+              <input type="hidden" id="skill-id">
+              
+              <div class="form-row-3">
+                <div class="form-group">
+                  <input type="text" id="skill-name" class="form-input" placeholder=" " required>
+                  <label for="skill-name" class="form-label">Skill Name (e.g. KiCad PCB)</label>
+                </div>
+                <div class="form-group">
+                  <input type="number" id="skill-level" class="form-input" min="1" max="100" placeholder=" " required>
+                  <label for="skill-level" class="form-label">Proficiency Level (1-100%)</label>
+                </div>
+                <div class="form-group">
+                  <select id="skill-category" class="form-input" required style="appearance: none;">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="microcontrollers">Microcontrollers</option>
+                    <option value="languages">Programming Languages</option>
+                    <option value="protocols">Protocols & IoT</option>
+                    <option value="tools">Tools & Lab</option>
+                  </select>
+                  <label for="skill-category" class="form-label" style="top: -0.6rem; left: 0.8rem; font-size: 0.75rem; background: #111827; padding: 0 0.4rem; color: var(--accent-primary);">Category Group</label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-check"></i> Save Skill</button>
+                <button type="button" class="btn btn-secondary cancel-form-btn" data-form="skill">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 6: Certificates -->
+        <div class="tab-panel" id="tab-certificates">
+          <!-- Certificates List -->
+          <div class="glass-panel recent-panel" style="margin-bottom: 2rem;">
+            <div class="header-with-action">
+              <h3>Earned Credentials</h3>
+              <button class="btn btn-primary btn-sm add-new-trigger" data-form="certificate"><i class="fa-solid fa-plus"></i> Add Certificate</button>
+            </div>
+            <div id="admin-certificates-list" class="admin-items-list">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Add / Edit Certificate Form -->
+          <div class="glass-panel form-panel hidden-panel" id="form-certificate-container">
+            <h3 id="certificate-form-title">Create Certificate Entry</h3>
+            <form id="certificate-mgr-form" class="contact-form admin-form">
+              <input type="hidden" id="cert-id">
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <input type="text" id="cert-title" class="form-input" placeholder=" " required>
+                  <label for="cert-title" class="form-label">Certificate Title</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="cert-issuer" class="form-input" placeholder=" " required>
+                  <label for="cert-issuer" class="form-label">Issuing Authority</label>
+                </div>
+              </div>
+
+              <div class="form-row-3">
+                <div class="form-group">
+                  <input type="text" id="cert-verify-id" class="form-input" placeholder=" ">
+                  <label for="cert-verify-id" class="form-label">Verification ID / Node Code</label>
+                </div>
+                <div class="form-group">
+                  <input type="url" id="cert-verify-url" class="form-input" placeholder=" ">
+                  <label for="cert-verify-url" class="form-label">Verification URL Link</label>
+                </div>
+                <div class="form-group">
+                  <input type="text" id="cert-date" class="form-input" placeholder=" " required>
+                  <label for="cert-date" class="form-label">Issue Date (e.g. 2025)</label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-check"></i> Save Certificate</button>
+                <button type="button" class="btn btn-secondary cancel-form-btn" data-form="certificate">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 7: Resumes -->
+        <div class="tab-panel" id="tab-resumes">
+          <div class="glass-panel form-panel" style="margin-bottom: 2rem;">
+            <h3>Active Resumes & File Versioning</h3>
+            <div class="table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Filename</th>
+                    <th>Version</th>
+                    <th>Uploaded Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="resumes-version-list">
+                  <tr><td colspan="4" style="text-align: center;">No resumes cataloged.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="glass-panel form-panel">
+            <h3>Upload New Resume Version</h3>
+            <form id="resume-upload-form" class="contact-form admin-form">
+              <div class="form-group">
+                <input type="text" id="resume-version" class="form-input" placeholder=" " required>
+                <label for="resume-version" class="form-label">File Version (e.g. 2.0 or 2026_V1)</label>
+              </div>
+              
+              <div class="form-group file-upload-box">
+                <i class="fa-solid fa-file-pdf"></i>
+                <p>Drag resume PDF/TXT here or <span>click to browse</span></p>
+                <input type="file" id="resume-file" accept=".pdf,.txt,.doc,.docx" required>
+                <div class="upload-progress" id="resume-upload-progress"></div>
+              </div>
+
+              <button type="submit" class="btn btn-primary"><i class="fa-solid fa-cloud-arrow-up"></i> Upload and Deploy Resume</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tab 8: Messages -->
+        <div class="tab-panel" id="tab-messages">
+          <div class="glass-panel recent-panel">
+            <h3>Inbound Transmission Logs</h3>
+            <div class="table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Sender</th>
+                    <th>Contact Link</th>
+                    <th>Subject</th>
+                    <th>Message payload</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="messages-ledgers-list">
+                  <tr><td colspan="6" style="text-align: center;">No transmissions logged.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

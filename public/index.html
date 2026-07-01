@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chandrabal C | Embedded Systems Engineer Portfolio</title>
+  
+  <meta name="description" content="Professional portfolio of Chandrabal C, an Embedded Systems Engineer specializing in ESP32, ATmega328p, Embedded C, and KiCad PCB designs.">
+  <meta name="keywords" content="Chandrabal C, Embedded Systems, Firmware Engineer, PCB Design, IoT, ESP32, ATmega328p, KiCad, Embedded C">
+  <meta name="author" content="Chandrabal C">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scroll-bar"></div>
+  </div>
+
+  <!-- Background Interactive Canvas & Glows -->
+  <canvas id="circuit-canvas"></canvas>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Header / Navigation -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <i class="fa-solid fa-microchip logo-icon"></i>
+        <span id="logo-text">CHANDRABAL</span><span>.IO</span>
+      </a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#resume" class="nav-link">Resume</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. Hero Section -->
+  <section id="hero" class="section hero-section">
+    <div class="hero-grid">
+      <div class="hero-content reveal">
+        <span class="hero-tagline" id="hero-tagline">system_init(CHANDRABAL_C)</span>
+        <h1 class="hero-name" id="hero-name">Chandrabal C</h1>
+        <h2 class="hero-role" id="typewriter-role">Embedded Systems Engineer</h2>
+        <p class="hero-bio" id="hero-bio">
+          Loading hardware configurations...
+        </p>
+        <div class="hero-actions">
+          <a href="/api/resume/download" class="btn btn-primary" id="hero-download-btn"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+        <div class="social-links" id="hero-socials">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+      
+      <div class="hero-graphic reveal">
+        <div class="pcb-mockup">
+          <div class="pcb-grid"></div>
+          <div class="pcb-glow"></div>
+          <div class="pcb-pins"></div>
+          <div class="pcb-mcu">ESP32-S3</div>
+          <div class="pulsing-led led-1"></div>
+          <div class="pulsing-led led-2"></div>
+          <div class="pulsing-led led-3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. About Me Section -->
+  <section id="about" class="section reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">01 / Profile</span>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    
+    <div class="about-grid">
+      <div class="about-text" id="about-bio-container">
+        <!-- Populated dynamically -->
+      </div>
+      
+      <!-- Metrics Dashboard -->
+      <div class="about-metrics" id="about-metrics-container">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Experience Timeline Section -->
+  <section id="experience" class="section reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">02 / Journey</span>
+      <h2 class="section-title">Work Experience</h2>
+    </div>
+    
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      <div id="experience-timeline-container">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Technical Skills Section -->
+  <section id="skills" class="section reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">03 / Capabilities</span>
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+    
+    <div class="skills-grid" id="skills-grid-container">
+      <!-- Populated dynamically -->
+    </div>
+  </section>
+
+  <!-- 5. Featured Projects Section -->
+  <section id="projects" class="section reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">04 / Laboratory Logs</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    
+    <div class="projects-grid" id="projects-grid-container">
+      <!-- Populated dynamically -->
+    </div>
+  </section>
+
+  <!-- 6. Education & Achievements Section -->
+  <section class="section reveal">
+    <div class="edu-achieve-grid">
+      
+      <!-- Education Column -->
+      <div id="education">
+        <div class="section-title-wrap" style="text-align: left; margin-bottom: 2rem;">
+          <span class="section-subtitle">Education</span>
+          <h3 class="section-title" style="font-size: 1.8rem;">Academic Path</h3>
+        </div>
+        <div class="edu-timeline" id="education-container">
+          <div class="edu-item">
+            <span class="edu-year">2021 - 2025</span>
+            <h4 class="edu-degree">B.E - Electronics and Communication Engineering</h4>
+            <span class="edu-school">University College of Engineering, Anna University</span>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem;">CGPA: 7.3</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements Column -->
+      <div id="achievements">
+        <div class="section-title-wrap" style="text-align: left; margin-bottom: 2rem;">
+          <span class="section-subtitle">Highlights</span>
+          <h3 class="section-title" style="font-size: 1.8rem;">Key Achievements</h3>
+        </div>
+        <div class="achievements-list" id="achievements-container">
+          <div class="glass-panel achievement-card">
+            <i class="fa-solid fa-cloud-arrow-up achievement-icon"></i>
+            <div class="achievement-content">
+              <h4 class="achievement-title">Cloud Datastream Integration</h4>
+              <p class="achievement-desc">Integrated ThingSpeak cloud nodes using HTTP/MQTT protocols for telemetry logs.</p>
+            </div>
+          </div>
+          <div class="glass-panel achievement-card">
+            <i class="fa-solid fa-compass-drafting achievement-icon"></i>
+            <div class="achievement-content">
+              <h4 class="achievement-title">2-Layer PCB Configurations</h4>
+              <p class="achievement-desc">Designed custom schematics and low-loss tracks using KiCad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. Certifications Section -->
+  <section id="certifications" class="section reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">Credentials</span>
+      <h2 class="section-title">Certifications & Training</h2>
+    </div>
+    
+    <div class="certs-grid" id="certificates-grid-container">
+      <!-- Populated dynamically -->
+    </div>
+  </section>
+
+  <!-- 8. Resume Section -->
+  <section id="resume" class="section reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">05 / Sheet Preview</span>
+      <h2 class="section-title">Curriculum Vitae</h2>
+    </div>
+    
+    <div class="resume-box">
+      <!-- Embedded Resume Preview Card -->
+      <div class="glass-panel resume-preview-container" id="resume-preview-card">
+        <!-- Populated dynamically -->
+      </div>
+      
+      <div class="resume-actions">
+        <a href="/api/resume/download" class="btn btn-primary" id="download-resume-btn"><i class="fa-solid fa-download"></i> Download Resume</a>
+        <button id="view-resume-btn" class="btn btn-secondary"><i class="fa-solid fa-eye"></i> View Full Screen</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Contact Section -->
+  <section id="contact" class="section reveal">
+    <div class="section-title-wrap">
+      <span class="section-subtitle">06 / Contact</span>
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+    
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <p class="contact-intro">
+          Looking for a skilled Embedded Systems Engineer trainee to design circuits or write low-level code? Feel free to reach out via email, phone, or LinkedIn!
+        </p>
+        <div class="contact-details" id="contact-details-list">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="glass-panel contact-form-panel">
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" class="form-input" placeholder=" " required>
+            <label for="name" class="form-label">Full Name</label>
+          </div>
+          
+          <div class="form-group">
+            <input type="email" id="email" class="form-input" placeholder=" " required>
+            <label for="email" class="form-label">Email Address</label>
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="subject" class="form-input" placeholder=" " required>
+            <label for="subject" class="form-label">Subject</label>
+          </div>
+
+          <div class="form-group">
+            <textarea id="message" class="form-input form-textarea" placeholder=" " required></textarea>
+            <label for="message" class="form-label">Project Details / Message</label>
+          </div>
+
+          <div class="form-status" id="form-status"></div>
+
+          <button type="submit" class="btn btn-primary" id="form-submit-btn">
+            <i class="fa-solid fa-paper-plane"></i> Transmit Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <i class="fa-solid fa-microchip" style="color: var(--accent-primary);"></i> <span id="footer-logo-text">CHANDRABAL</span><span>.IO</span>
+      </div>
+      <div class="footer-copy" id="footer-copy">
+        &copy; 2026 Chandrabal C. All rights reserved.
+      </div>
+      <ul class="footer-links">
+        <li><a href="#hero">Back to top</a></li>
+        <li><a href="/login.html">Admin Login</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- 10. Dynamic Project Details Modal Overlay -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="glass-panel modal-container">
+      <button class="modal-close" id="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-content-wrap" id="modal-content">
+        <!-- Populated via Javascript -->
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

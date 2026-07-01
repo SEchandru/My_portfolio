@@ -1,0 +1,54 @@
+CHANDRABAL C
+Embedded Systems Engineer
+Chennai, India | chandrabal2104@gmail.com | +91 - 9751720948
+https://linkedin.com/in/chandrabal | https://github.com
+
+==================================================
+SUMMARY
+==================================================
+Innovative Embedded Systems Engineer (2025 Graduate) with hands-on experience in ESP32,
+ATmega328p, and IoT development. Proficient in Embedded C and hardware design using KiCad.
+Proven ability to develop real-time firmware and design custom PCBs for industrial and IoT applications.
+
+==================================================
+TECHNICAL SKILLS
+==================================================
+- Microcontrollers: ESP32, ESP8266, ATmega328p, STM32 (Learning)
+- Languages: C, Embedded C, Python (Basics)
+- Communication Protocols: I2C, SPI, UART, MQTT, HTTP
+- Software Tools: KiCad (PCB Design), Arduino IDE, VS Code (PlatformIO)
+- Hardware Skills: Circuit Debugging, Sensor Interfacing, Soldering
+
+==================================================
+WORK EXPERIENCE
+==================================================
+Yalamanchili Software Exports
+Embedded Trainee (October 2025 - Present)
+- Developing firmware for ESP32 and ATmega328p based applications.
+- Designing hardware schematics and 2-layer PCB layouts using KiCad.
+- Performing hardware-software integration and debugging using Multimeters and Logic Analyzers.
+
+==================================================
+PROJECTS
+==================================================
+Smart Water Tank Monitoring System (ESP32, IoT)
+- Developed an automated system using ESP32 and Ultrasonic sensors for high-accuracy level detection.
+- Integrated ThingSpeak cloud via HTTP/MQTT for real-time remote data logging.
+- Implemented low-power firmware to optimize battery efficiency for IoT deployment.
+
+Smart Vending Machine System (ESP32, Embedded System)
+- Engineered firmware for automated dispensing using PWM motor control and Relays.
+- Built a user interface with 4x4 Keypad and 16x2 LCD for seamless interaction.
+- Integrated feedback loops for error handling and precise product dispensing.
+
+Smart Parking System (Embedded System)
+- Developed a real-time parking slot management system using IR sensors.
+- Optimized sensor polling rates to ensure high responsiveness and low power usage.
+- Designed a central interface to display real-time slot availability for users.
+
+==================================================
+EDUCATION
+==================================================
+B.E - Electronics and Communication Engineering
+University College of Engineering, Anna University (2021 - 2025)
+CGPA: 7.3
