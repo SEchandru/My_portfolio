@@ -1932,15 +1932,34 @@ footer {
 }
 
 /* ----------------------------------------------------
-   21. RESPONSIVE MEDIA QUERIES FOR ADMIN
+   21. COMPREHENSIVE RESPONSIVE MEDIA QUERIES
    ---------------------------------------------------- */
+
+/* --- 1. Laptops and Tablets (max-width: 1024px) --- */
 @media (max-width: 1024px) {
+  /* Public Site Grid Adjustments */
+  .hero-grid {
+    gap: 2rem;
+  }
+  .about-grid {
+    gap: 2.5rem;
+  }
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .certs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Admin Dashboard adjustments */
   .admin-skill-chip {
     width: calc(50% - 0.63rem);
   }
 }
 
+/* --- 2. Medium Screens & Tablet Portrait (max-width: 900px) --- */
 @media (max-width: 900px) {
+  /* Admin Sidebar layout reflow (Horizontal nav bar) */
   .dashboard-wrapper {
     flex-direction: column;
   }
@@ -1949,44 +1968,223 @@ footer {
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--border-color);
-    padding: 1.5rem;
-    gap: 1.5rem;
+    padding: 1.2rem 1rem;
+    gap: 1rem;
   }
   .sidebar-nav {
     flex-direction: row;
     overflow-x: auto;
     padding-bottom: 0.5rem;
+    gap: 0.5rem;
   }
   .nav-tab-btn {
     white-space: nowrap;
     width: auto;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.8rem;
   }
   .dashboard-content {
-    height: calc(100vh - 250px);
-    padding: 1.5rem;
+    height: calc(100vh - 210px);
+    padding: 1.2rem;
   }
 }
 
+/* --- 3. Tablet and Mobile Reflows (max-width: 768px) --- */
 @media (max-width: 768px) {
+  /* Global section spacing */
+  .section {
+    padding: 4rem 0;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  /* Visitor Header and Mobile Hamburger Navigation */
+  .hamburger {
+    display: block;
+    z-index: 1000;
+  }
+  
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(5, 8, 14, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    display: block;
+  }
+
+  /* Hero Section Reflow */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+    padding-top: 2rem;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-name {
+    font-size: 2.4rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .pcb-mockup {
+    width: 270px;
+    height: 270px;
+    border-radius: 20px;
+  }
+
+  /* About Grid Stack */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Experience Split Timeline -> Left-aligned linear timeline */
+  .timeline-line {
+    left: 16px;
+    transform: none;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0 !important;
+    padding-left: 3rem;
+    padding-right: 0;
+    text-align: left !important;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-badge {
+    left: 8px !important;
+    top: 0.5rem;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-responsibilities,
+  .timeline-item:nth-child(odd) .timeline-tags {
+    text-align: left;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-responsibilities li {
+    padding-left: 1.25rem;
+    padding-right: 0;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-responsibilities li::after {
+    display: none;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-responsibilities li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+  }
+
+  /* Projects & Contact Grid Stacks */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Modal responsiveness */
+  .modal-container {
+    max-height: 90vh;
+    border-radius: 12px;
+  }
+  .modal-banner {
+    height: 180px;
+  }
+  .modal-body {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  .modal-section-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Admin forms reflow */
   .form-row-2, .form-row-3 {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
+  
   .admin-item-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
+  
   .admin-item-img {
     width: 100%;
     height: 120px;
   }
+  
   .admin-item-actions {
     width: 100%;
     justify-content: flex-end;
   }
+  
   .admin-skill-chip {
+    width: 100%;
+  }
+}
+
+/* --- 4. Micro Phones (max-width: 480px) --- */
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 2rem;
+  }
+  .hero-tagline {
+    font-size: 0.8rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-actions .btn {
     width: 100%;
   }
 }
