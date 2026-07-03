@@ -1992,7 +1992,12 @@ footer {
 @media (max-width: 768px) {
   /* Global section spacing */
   .section {
-    padding: 4rem 0;
+    padding: 4rem 1.25rem;
+  }
+  .hero-section {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    min-height: auto;
   }
   .section-title {
     font-size: 1.8rem;
