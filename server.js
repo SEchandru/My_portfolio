@@ -13,13 +13,14 @@ const JWT_SECRET = 'PORTFOLIO_CMS_JWT_SECRET_KEY_2026';
 // ----------------------------------------------------
 // 1. INITIALIZE DIRECTORIES & ASSETS
 // ----------------------------------------------------
-if (!fs.existsSync('uploads')) {
-  fs.mkdirSync('uploads');
-}
+try {
+  if (!fs.existsSync('uploads')) {
+    fs.mkdirSync('uploads');
+  }
 
-const defaultResumePath = path.resolve('uploads', 'Chandrabal_C_Resume_Default.txt');
-if (!fs.existsSync(defaultResumePath)) {
-  const resumeText = `
+  const defaultResumePath = path.resolve('uploads', 'Chandrabal_C_Resume_Default.txt');
+  if (!fs.existsSync(defaultResumePath)) {
+    const resumeText = `
 CHANDRABAL C
 Embedded Systems Engineer
 Chennai, India | chandrabal2104@gmail.com | +91 - 9751720948
@@ -74,8 +75,11 @@ EDUCATION
 B.E - Electronics and Communication Engineering
 University College of Engineering, Anna University (2021 - 2025)
 CGPA: 7.3
-  `;
-  fs.writeFileSync(defaultResumePath, resumeText.trim(), 'utf8');
+    `;
+    fs.writeFileSync(defaultResumePath, resumeText.trim(), 'utf8');
+  }
+} catch (err) {
+  console.warn('Filesystem initialization skipped or read-only:', err.message);
 }
 
 // ----------------------------------------------------
