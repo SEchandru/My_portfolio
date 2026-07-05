@@ -245,7 +245,7 @@ function hydrateProjects(projects) {
     container.innerHTML += `
       <div class="glass-panel project-card" data-project-id="${proj.id}">
         <div class="project-image-wrap">
-          <img src="${proj.image}" alt="${proj.title}" class="project-image">
+          <img src="${proj.image}" alt="${proj.title}" class="project-image" loading="lazy">
           <div class="project-image-overlay"></div>
         </div>
         <div class="project-body">
