@@ -1169,6 +1169,20 @@ header.scrolled {
   display: flex;
   gap: 1.25rem;
   align-items: center;
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a.contact-detail-item:hover .contact-detail-icon {
+  background: rgba(0, 230, 118, 0.2);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+}
+
+a.contact-detail-item:hover .contact-detail-value {
+  color: var(--accent-primary);
+  text-shadow: 0 0 5px rgba(0, 230, 118, 0.2);
 }
 
 .contact-detail-icon {

@@ -110,20 +110,20 @@ function hydrateProfile(profile) {
 
   const contactList = document.getElementById('contact-details-list');
   contactList.innerHTML = `
-    <div class="contact-detail-item">
+    <a href="mailto:${profile.email}" class="contact-detail-item">
       <div class="contact-detail-icon"><i class="fa-solid fa-envelope"></i></div>
       <div class="contact-detail-content">
         <span class="contact-detail-label">Email</span>
-        <span class="contact-detail-value"><a href="mailto:${profile.email}">${profile.email}</a></span>
+        <span class="contact-detail-value">${profile.email}</span>
       </div>
-    </div>
-    <div class="contact-detail-item">
+    </a>
+    <a href="tel:${profile.phone.replace(/\s+/g, '')}" class="contact-detail-item">
       <div class="contact-detail-icon"><i class="fa-solid fa-phone"></i></div>
       <div class="contact-detail-content">
         <span class="contact-detail-label">Phone</span>
-        <span class="contact-detail-value"><a href="tel:${profile.phone.replace(/\s+/g, '')}">${profile.phone}</a></span>
+        <span class="contact-detail-value">${profile.phone}</span>
       </div>
-    </div>
+    </a>
     <div class="contact-detail-item">
       <div class="contact-detail-icon"><i class="fa-solid fa-location-dot"></i></div>
       <div class="contact-detail-content">
@@ -131,13 +131,13 @@ function hydrateProfile(profile) {
         <span class="contact-detail-value">${profile.location}</span>
       </div>
     </div>
-    <div class="contact-detail-item">
+    <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-detail-item">
       <div class="contact-detail-icon"><i class="fa-brands fa-linkedin"></i></div>
       <div class="contact-detail-content">
         <span class="contact-detail-label">LinkedIn</span>
-        <span class="contact-detail-value"><a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer">${profile.linkedin.replace(/^https?:\/\/(www\.)?/, '')}</a></span>
+        <span class="contact-detail-value">${profile.linkedin.replace(/^https?:\/\/(www\.)?/, '')}</span>
       </div>
-    </div>
+    </a>
   `;
 
   const preview = document.getElementById('resume-preview-card');
