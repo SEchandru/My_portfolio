@@ -149,7 +149,7 @@ function hydrateProfile(profile) {
       </div>
       <div class="resume-contact-mini">
         <p>${profile.location} | <a href="mailto:${profile.email}" style="color:var(--accent-primary); text-decoration:underline;">${profile.email}</a></p>
-        <p>${profile.phone} | <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary); text-decoration:underline;">LinkedIn</a></p>
+        <p><a href="tel:${profile.phone.replace(/\s+/g, '')}" style="color:var(--accent-primary); text-decoration:underline;">${profile.phone}</a> | <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary); text-decoration:underline;">LinkedIn</a></p>
       </div>
     </div>
     <div class="resume-summary-mini">
