@@ -449,6 +449,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve('public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Portfolio CMS Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' && process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`Portfolio CMS Server running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
