@@ -58,11 +58,13 @@ function hydrateProfile(profile) {
   document.getElementById('hero-name').textContent = profile.name;
   
   const taglineEl = document.getElementById('hero-tagline');
-  if (profile.tagline) {
-    taglineEl.textContent = profile.tagline;
-    taglineEl.style.display = 'inline-block';
-  } else {
-    taglineEl.style.display = 'none';
+  if (taglineEl) {
+    if (profile.tagline) {
+      taglineEl.textContent = profile.tagline;
+      taglineEl.style.display = 'inline-block';
+    } else {
+      taglineEl.style.display = 'none';
+    }
   }
   
   document.getElementById('hero-bio').textContent = profile.bio;
