@@ -53,20 +53,28 @@ async function loadPortfolioData() {
 function hydrateProfile(profile) {
   document.title = `${profile.name} | ${profile.role} Portfolio`;
   
-  document.getElementById('logo-text').textContent = profile.name.split(' ')[0].toUpperCase();
-  document.getElementById('footer-logo-text').textContent = profile.name.split(' ')[0].toUpperCase();
+  document.getElementById('logo-text').textContent = 'PORTFOLIO';
+  document.getElementById('footer-logo-text').textContent = 'PORTFOLIO';
   document.getElementById('hero-name').textContent = profile.name;
-  document.getElementById('hero-tagline').textContent = profile.tagline || `system_init(${profile.name.replace(/\s+/g, '_').toUpperCase()})`;
+  
+  const taglineEl = document.getElementById('hero-tagline');
+  if (profile.tagline) {
+    taglineEl.textContent = profile.tagline;
+    taglineEl.style.display = 'inline-block';
+  } else {
+    taglineEl.style.display = 'none';
+  }
+  
   document.getElementById('hero-bio').textContent = profile.bio;
   document.getElementById('footer-copy').innerHTML = `&copy; ${new Date().getFullYear()} ${profile.name}. All rights reserved.`;
 
   const socialsContainer = document.getElementById('hero-socials');
   socialsContainer.innerHTML = '';
   if (profile.github) {
-    socialsContainer.innerHTML += `<a href="${profile.github}" target="_blank" aria-label="GitHub" class="social-icon"><i class="fa-brands fa-github"></i></a>`;
+    socialsContainer.innerHTML += `<a href="${profile.github}" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon"><i class="fa-brands fa-github"></i></a>`;
   }
   if (profile.linkedin) {
-    socialsContainer.innerHTML += `<a href="${profile.linkedin}" target="_blank" aria-label="LinkedIn" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>`;
+    socialsContainer.innerHTML += `<a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>`;
   }
   socialsContainer.innerHTML += `<a href="mailto:${profile.email}" aria-label="Email" class="social-icon"><i class="fa-solid fa-envelope"></i></a>`;
 
@@ -121,6 +129,13 @@ function hydrateProfile(profile) {
         <span class="contact-detail-value">${profile.location}</span>
       </div>
     </div>
+    <div class="contact-detail-item">
+      <div class="contact-detail-icon"><i class="fa-brands fa-linkedin"></i></div>
+      <div class="contact-detail-content">
+        <span class="contact-detail-label">LinkedIn</span>
+        <span class="contact-detail-value"><a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer">${profile.linkedin.replace(/^https?:\/\/(www\.)?/, '')}</a></span>
+      </div>
+    </div>
   `;
 
   const preview = document.getElementById('resume-preview-card');
@@ -131,8 +146,8 @@ function hydrateProfile(profile) {
         <p>${profile.role}</p>
       </div>
       <div class="resume-contact-mini">
-        <p>${profile.location} | ${profile.email}</p>
-        <p>${profile.phone} | ${profile.linkedin.replace(/^https?:\/\//, '')}</p>
+        <p>${profile.location} | <a href="mailto:${profile.email}" style="color:var(--accent-primary); text-decoration:underline;">${profile.email}</a></p>
+        <p>${profile.phone} | <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary); text-decoration:underline;">${profile.linkedin.replace(/^https?:\/\/(www\.)?/, '')}</a></p>
       </div>
     </div>
     <div class="resume-summary-mini">

@@ -454,11 +454,14 @@ header.scrolled {
   align-items: center;
   box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
   z-index: 10;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--accent-primary);
-  font-weight: 700;
-  letter-spacing: 1px;
+  overflow: hidden;
+}
+
+.pcb-mcu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
 
 .pcb-pins {
@@ -1361,7 +1364,9 @@ footer {
   width: 100%;
   max-width: 850px;
   max-height: 85vh;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   border-radius: 16px;
   position: relative;
   transform: translateY(20px);
@@ -1386,7 +1391,7 @@ footer {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 100;
   font-size: 1.2rem;
   transition: var(--transition-smooth);
 }
@@ -1400,6 +1405,8 @@ footer {
 .modal-content-wrap {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .modal-banner {

@@ -22,13 +22,13 @@ const getInitialSeed = () => {
     profile: {
       name: 'Chandrabal C',
       role: 'Embedded Systems Engineer',
-      tagline: 'system_init(CHANDRABAL_C)',
+      tagline: '',
       bio: 'Innovative Embedded Systems Engineer (2025 Graduate) with hands-on experience in ESP32, ATmega328p, and IoT development. Proficient in Embedded C and hardware design using KiCad. Proven ability to develop real-time firmware and design custom PCBs for industrial and IoT applications.',
       phone: '+91 - 9751720948',
       email: 'chandrabal2104@gmail.com',
       location: 'Tamil Nadu, India',
-      linkedin: 'https://linkedin.com/in/chandrabal',
-      github: 'https://github.com'
+      linkedin: 'https://www.linkedin.com/in/chandrabal-c-053440387/',
+      github: 'https://github.com/SEchandru'
     },
     experience: [
       {
@@ -42,18 +42,6 @@ const getInitialSeed = () => {
           'Performing hardware-software integration, system test validations, and debugs using Multimeters and Logic Analyzers.'
         ],
         tags: ['ESP32', 'ATmega328p', 'Embedded C', 'KiCad', 'Logic Analyzers']
-      },
-      {
-        id: 2,
-        company: 'Anna University (UCE)',
-        role: 'ECE Engineering Student',
-        duration: '2021 - 2025',
-        responsibilities: [
-          'Acquired foundational knowledge in electronic circuitry, digital logic, VLSI, and signal communication networks.',
-          'Developed multiple laboratory prototypes using Arduino boards, sensor interfaces, and basic IoT modules.',
-          'Actively structured hardware-software implementations for smart systems.'
-        ],
-        tags: ['Electronics', 'Arduino IDE', 'IoT Basics', 'Circuit Debugging']
       }
     ],
     skills: [
