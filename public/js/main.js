@@ -135,7 +135,7 @@ function hydrateProfile(profile) {
       <div class="contact-detail-icon"><i class="fa-brands fa-linkedin"></i></div>
       <div class="contact-detail-content">
         <span class="contact-detail-label">LinkedIn</span>
-        <span class="contact-detail-value">${profile.linkedin.replace(/^https?:\/\/(www\.)?/, '')}</span>
+        <span class="contact-detail-value">View Profile</span>
       </div>
     </a>
   `;
@@ -149,7 +149,7 @@ function hydrateProfile(profile) {
       </div>
       <div class="resume-contact-mini">
         <p>${profile.location} | <a href="mailto:${profile.email}" style="color:var(--accent-primary); text-decoration:underline;">${profile.email}</a></p>
-        <p>${profile.phone} | <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary); text-decoration:underline;">${profile.linkedin.replace(/^https?:\/\/(www\.)?/, '')}</a></p>
+        <p>${profile.phone} | <a href="${profile.linkedin}" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary); text-decoration:underline;">LinkedIn</a></p>
       </div>
     </div>
     <div class="resume-summary-mini">
